@@ -1,17 +1,17 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports = function() {
 	
-	var settings;
+	// var settings;
 	
 	return {
 		
-		settings: {
+		// settings: {
 			
-		},
+		// },
 		
 		init: function() {
 			
-			settings = this.settings;
+			// settings = this.settings;
 			
 			this.bindUI();
 		},
@@ -33,9 +33,80 @@ module.exports = function() {
 		let feats = fet.feat;
 		let items = itm.item;
 		let races = rce.race;
+		let mundane =[];
+		let treasure = [];
 		
-		console.log(bkg);
-						
+		console.log(items);
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].rarity == "Common") {
+				console.log(items[i])
+			}
+		}
+
+		
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].rarity == "None"  && items[i].type == "G"  && items[i].source == "PHB"){
+				mundane.push(items[i])
+			}
+		};
+		
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].type == "$"){
+				treasure.push(items[i])
+			}
+		};
+		
+		var deleteAll = function(){
+			$(".display").html("");
+
+		}
+		
+		var getMundane = function (){
+			var stuff = mundane[Math.floor(Math.random()*mundane.length)];
+			console.log(stuff);
+			tooltip = "";
+			tooltipHelp = "";
+			page = `\npage ${stuff.page} of ${stuff.source}`;
+			
+			if (stuff.entries && stuff.entries.length == 1) {
+				tooltip = stuff.entries[0];
+			} else if (stuff.entries && stuff.entries.length > 1){
+				tooltip = stuff.entries[0];
+				
+				if (stuff.entries[1].items) {
+					for (var i = 0; i < stuff.entries[1].items.length; i++) {
+						tooltipHelp += "\n"+stuff.entries[1].items[i];
+					}
+				} else {
+						tooltipHelp = " "+stuff.entries[1];
+				}
+				
+			} else {
+				tooltip = "no additional info available"
+			}
+			$(".mundane").append(
+				`<div class="stuff"><p class="tool">${tooltip}${tooltipHelp}${page}</p>${stuff.name}</div>`,
+				`<hr>`
+				);
+		};
+		
+		var getTreasure = function (){
+			var stuff = treasure[Math.floor(Math.random()*100)];
+			console.log(stuff);
+			tooltip = stuff.value;
+			
+			
+			$(".treasure").append(
+				`<div class="stuff"><p class="tool">${tooltip}</p>${stuff.name}</div>`,
+				`<hr>`
+				);
+		};
+		
+		
+		$("#delete-all").click(deleteAll);
+		$("#mundane-item").click(getMundane);
+		$("#treasure-item").click(getTreasure);
+							
 		}
 	}
 }
