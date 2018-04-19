@@ -1,41 +1,207 @@
 // Component specific styles
+.display {
+    .junk {
+        border: solid 2px #337AB7;
+    }
+    .money {
+        border: solid 2px gold;
+    }
+    .common {
+        border: solid 2px #2E8B57;
+    }
+    .uncommon {
+        border: solid 2px orange;
+    }
+    hr {
+        margin: 0;
+    }
+    
+    
+    .item{
+        position: relative;
+        
+        .stuff {
 
-.stuff{
-
-		position: relative;
-		text-align: center;
-
-			
-			.tool{
-				display: none;
-				position: absolute;
-				top: calc(100% + 20px);
-				left: 50%;
-				transform: translateX(-50%);
-				background-color: gold;
-				z-index: 10;
-				// border-radius: 20%;
-				text-align: left;
-				padding: 10px;
-				text-align: center;
-				width: calc(100% );
-				
-				&:after{
-					position: absolute;
-					content: "";
-					width: 30px;
-					height: 30px;
-					top: -15px;
-					left: calc(50% - 15px);
-					background-color: gold;
-					transform: rotate(45deg);
-					z-index: -1;
-
-				}
-			}
-	
+            text-align: center;
+            padding: 20px 20px;
+            margin: 5px 0;
+            height: 100%;
+    		position: relative;
+            display: block;
+            
+            &:after {
+                    display: none;
+                    position: absolute;
+                    content: "";
+                    width: 30px;
+                    height: 30px;
+                    top: 30%;
+                    right: -9%;
+                    background-color: gold;
+                    transform: rotate(45deg);
+                    // z-index: -1;
+                }
+                
+            &:hover:after{
+                display: block;
+            }
+        }
+        
+        .tool {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translateX(101%);
+                background-color: gold;
+                z-index: 10;
+                // border-radius: 5%;
+                text-align: left;
+                padding: 30px;
+                font-family: Georgia, serif;
+                max-width: 100%;
+            }
+    }
+    .item:hover .tool{
+        display: block;
+    }
 }
 
-			.stuff:hover .tool{
-				display: inline;
-			}
+
+.btn-uncommon { 
+  color: #FFFFFF; 
+  background-color: #FF8C00; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-uncommon:hover, 
+.btn-uncommon:focus, 
+.btn-uncommon:active, 
+.btn-uncommon.active, 
+.open .dropdown-toggle.btn-uncommon { 
+  color: #FFFFFF; 
+  background-color: #C26B00; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-uncommon:active, 
+.btn-uncommon.active, 
+.open .dropdown-toggle.btn-uncommon { 
+  background-image: none; 
+} 
+ 
+.btn-uncommon.disabled, 
+.btn-uncommon[disabled], 
+fieldset[disabled] .btn-uncommon, 
+.btn-uncommon.disabled:hover, 
+.btn-uncommon[disabled]:hover, 
+fieldset[disabled] .btn-uncommon:hover, 
+.btn-uncommon.disabled:focus, 
+.btn-uncommon[disabled]:focus, 
+fieldset[disabled] .btn-uncommon:focus, 
+.btn-uncommon.disabled:active, 
+.btn-uncommon[disabled]:active, 
+fieldset[disabled] .btn-uncommon:active, 
+.btn-uncommon.disabled.active, 
+.btn-uncommon[disabled].active, 
+fieldset[disabled] .btn-uncommon.active { 
+  background-color: #FF8C00; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-uncommon .badge { 
+  color: #FF8C00; 
+  background-color: #FFFFFF; 
+}
+
+.btn-common { 
+  color: #FFFFFF; 
+  background-color: #2E8B57; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-common:hover, 
+.btn-common:focus, 
+.btn-common:active, 
+.btn-common.active, 
+.open .dropdown-toggle.btn-common { 
+  color: #FFFFFF; 
+  background-color: #1C5736; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-common:active, 
+.btn-common.active, 
+.open .dropdown-toggle.btn-common { 
+  background-image: none; 
+} 
+ 
+.btn-common.disabled, 
+.btn-common[disabled], 
+fieldset[disabled] .btn-common, 
+.btn-common.disabled:hover, 
+.btn-common[disabled]:hover, 
+fieldset[disabled] .btn-common:hover, 
+.btn-common.disabled:focus, 
+.btn-common[disabled]:focus, 
+fieldset[disabled] .btn-common:focus, 
+.btn-common.disabled:active, 
+.btn-common[disabled]:active, 
+fieldset[disabled] .btn-common:active, 
+.btn-common.disabled.active, 
+.btn-common[disabled].active, 
+fieldset[disabled] .btn-common.active { 
+  background-color: #2E8B57; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-common .badge { 
+  color: #2E8B57; 
+  background-color: #FFFFFF; 
+}
+
+.btn-treasure { 
+  color: #FFFFFF; 
+  background-color: #D1B200; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-treasure:hover, 
+.btn-treasure:focus, 
+.btn-treasure:active, 
+.btn-treasure.active, 
+.open .dropdown-toggle.btn-treasure { 
+  color: #FFFFFF; 
+  background-color: #AD9300; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-treasure:active, 
+.btn-treasure.active, 
+.open .dropdown-toggle.btn-treasure { 
+  background-image: none; 
+} 
+ 
+.btn-treasure.disabled, 
+.btn-treasure[disabled], 
+fieldset[disabled] .btn-treasure, 
+.btn-treasure.disabled:hover, 
+.btn-treasure[disabled]:hover, 
+fieldset[disabled] .btn-treasure:hover, 
+.btn-treasure.disabled:focus, 
+.btn-treasure[disabled]:focus, 
+fieldset[disabled] .btn-treasure:focus, 
+.btn-treasure.disabled:active, 
+.btn-treasure[disabled]:active, 
+fieldset[disabled] .btn-treasure:active, 
+.btn-treasure.disabled.active, 
+.btn-treasure[disabled].active, 
+fieldset[disabled] .btn-treasure.active { 
+  background-color: #D1B200; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-treasure .badge { 
+  color: #D1B200; 
+  background-color: #FFFFFF; 
+}
