@@ -1,0 +1,15 @@
+/* Imports */
+// This project uses inverted triangle CSS architecture (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+
+// vendors
+@import '../vendors/css/bootstrap.min.css';
+
+// global
+@import 'vars';
+@import 'mixins';
+@import 'elements';
+@import 'global';
+
+@import 'components/component';
+
+@import 'helpers';
