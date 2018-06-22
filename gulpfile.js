@@ -17,6 +17,7 @@ gulp.task('sass', function () {
 		.pipe(sass().on('error', sass.logError)) // .on('error', sass.logError) prevents gulp from crashing when saving a typo or syntax error
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest('./assets/sass'))
+	.pipe(gulp.dest('./docs/assets/sass'))
 	.pipe(browserSync.stream()); // causes injection of styles on save
 });
 
@@ -41,7 +42,8 @@ gulp.task('vendors', function() {
 		.pipe(concat('vendors.js'))
 		//.pipe(uglify())
 		//.pipe(gulp.dest(localSettings.publishFolder + '/assets/vendors/js/'))
-		.pipe(gulp.dest('./assets/vendors/js/'));
+		.pipe(gulp.dest('./assets/vendors/js/'))
+		.pipe(gulp.dest('./docs/assets/vendors/js/'));
 });
 
 gulp.task('javascript', function() {
@@ -60,6 +62,7 @@ gulp.task('javascript', function() {
 		.pipe(source('main.js'))
 		.pipe(rename('bundle.js'))
 		.pipe(gulp.dest('./assets/js/'))
+		.pipe(gulp.dest('./docs/assets/js/'))
 		//.pipe(gulp.dest(localSettings.publishFolder + '/assets/js/'))
 		.pipe(browserSync.stream());
 });
@@ -75,11 +78,17 @@ gulp.task('HTML', function() {
 		.pipe(browserSync.stream()); // causes injection of html changes on save
 });
 
+gulp.task("copy", function(){
+	return gulp.src(['./index.html'])
+		.pipe(gulp.dest('./docs/'));
+});
+
 gulp.task('watch', function() {
 	gulp.watch('./assets/sass/**/*.scss', ['sass']);
 	gulp.watch(['./assets/js/**/*.js', '!./assets/js/bundle.js'], ['javascript']);
 	gulp.watch('./**/*.html', ['HTML']);
 	gulp.watch(['./assets/vendors/js/*.js', '!./assets/vendors/js/vendors.min.js'], ['vendors']);
+	gulp.watch('./index.html', ['copy']);
 });
 
 // Default Task

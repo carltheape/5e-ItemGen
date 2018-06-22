@@ -42,6 +42,8 @@ module.exports = function() {
 		let legendary = [];
 		let ranged = [];
 		let melee = [];
+		let wands = [];
+		let potions = [];
 		let races = rce.race;
 		let spells = spl.spell;
 		let spLvl = {
@@ -87,14 +89,21 @@ module.exports = function() {
 			if (items[i].type == "M") {
 				melee.push(items[i])
 			}
+			if (items[i].type == "WD") {
+				wands.push(items[i])
+			}
+			if (items[i].type == "P") {
+				potions.push(items[i])
+			}
 		}
 		
 		for (var i = 0; i < spells.length; i++) {
 			spLvl[spells[i].level].push(spells[i]);
 		};
 		
-		// console.log(bit);
-		console.log(ranged);
+		console.log(potions);
+		console.log(wands);
+		// console.log(ranged);
 		
 		var deleteAll = function(){
 			$(".display").html("");
