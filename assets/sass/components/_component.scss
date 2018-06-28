@@ -7,7 +7,18 @@ $white: #ffffff;
 $rare: #663399;
 $veryRare: #0096A1;
 
-
+.container{
+  
+  
+  .btn{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    
+    div{
+      word-wrap: break-word;
+    }
+  }
 
 .display {
     .junk {
@@ -361,4 +372,5 @@ fieldset[disabled] .btn-legendary.active {
 .btn-legendary .badge { 
   color: #000000; 
   background-color: #FCFC7C; 
+}
 }

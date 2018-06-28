@@ -409,6 +409,26 @@ module.exports = function() {
 			displayItem(tooltip, stuff.name, "legendary")
 		};
 		
+		var getWand = function (){
+			var stuff = wands[Math.floor(Math.random()*wands.length)];
+			tooltip = "";
+			console.log(stuff);
+			
+			if (stuff.entries) {
+				tooltip = `${stuff.entries}<br><br>`;
+			}
+			if(stuff.value){tooltip += `${stuff.value}`;}
+			if(stuff.rarity){tooltip += `${stuff.rarity}<br>`;}
+			if(stuff.name === "Wand of Wonder"){
+				for (var i = 0; i < 22; i++) {
+					tooltip += `${stuff.entries[4].rows[i][0]}, ${stuff.entries[4].rows[i][1]}<br>`
+				}
+			}
+			
+			
+			displayItem(tooltip, stuff.name, "wand");
+		};
+		
 		var getScroll = function(lvl, tool){
 			let rando = spLvl[lvl][Math.floor(Math.random() * spLvl[lvl].length) + 0];
 			console.log(rando);
@@ -478,6 +498,7 @@ module.exports = function() {
 		$("#rare-magic-item").click(getRare);
 		$("#very-rare-magic-item").click(getVeryRare);
 		$("#legendary-magic-item").click(getLegendary);
+		$("#wand-item").click(getWand);
 							
 		}
 	}
