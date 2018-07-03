@@ -7,370 +7,603 @@ $white: #ffffff;
 $rare: #663399;
 $veryRare: #0096A1;
 
-.container{
-  
-  
-  .btn{
-    display: block;
-    width: 100%;
-    overflow: hidden;
+.container {
+
+    #delete-all{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    overflow: visible;
     
-    div{
-      word-wrap: break-word;
+    .tool{
+      display: none;
+      position: absolute;
+      color: black;
+      background-color: gold;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 10px;
+      opacity: 0;
+      transition:1s;
+        -webkit-transition:1s;
+        -moz-transition:1s;
     }
-  }
-
-.display {
-    .junk {
-        border: solid 2px $junk;
+    
+    &:hover .tool{
+      opacity: 1;
+      display: initial;
+    }  
     }
-    .money {
-        border: solid 2px $money;
-    }
-    .common {
-        border: solid 2px $common;
-    }
-    .uncommon {
-        border: solid 2px $uncommon;
-    }
-    .rare {
-        border: solid 2px $rare;
-    }
-    .very-rare{
-        border: solid 2px $veryRare;
-    }
-    .legendary{
-        background-color: #000000;
-        color: #FCFC7C;
-    }
-    hr {
-        margin: 0;
-    }
-
-    .item {
-        // position: relative;
-
-        .stuff {
-
-            display: block;
-            text-align: center;
-            padding: 20px 20px;
-            margin: 5px 0;
-            height: 100%;
-
-            // &:after {
-            //     display: none;
-            //     position: absolute;
-            //     content: "";
-            //     width: 30px;
-            //     height: 30px;
-            //     top: 30%;
-            //     right: -9%;
-            //     background-color: $money;
-            //     transform: rotate(45deg); 
-            //     // z-index: -1;
-            // }
-
-            // &:hover:after {
-            //     display: block;
-            // }
+    
+    #randItems {
+        width: 43%;
+        position: absolute; 
+        left: -43%;
+        background-color: lightgrey;
+        padding: 10px;
+        transition:0.3s;
+        -webkit-transition:0.3s;
+        -moz-transition:0.3s;
+        
+        &.show{
+          left: 0;
         }
 
-        .tool {
-            display: none;
-            position: fixed;
-            top: 35px;
-            left: 30%;
-            // transform: translateX(50%);
-            background-color: $money;
-            z-index: 10; 
-            border-radius: 5px;
-            text-align: left;
-            padding: 30px;
-            font-family: Georgia, serif;
-            max-width: 65%;
+        .randItemsTab {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: lightgrey;
+            right: -28px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            border-radius: 10px;
+            z-index: 1;
+            cursor: pointer;
+
+            .tabIcon {
+                font-size: 30px;
+                position: absolute;
+                right: 0;
+                top: -5px; 
+                transform: rotate(-45deg);
+                padding: 5px;
+                transition:0.3s;
+                -webkit-transition:0.3s;
+                -moz-transition:0.3s;
+                
+                &.expanded{
+                  transform: rotate(135deg);
+                  right: -3px;
+                }
+            }
+        }
+        .btn{
+          position: relative;
+          z-index: 2;
         }
     }
-    .item:hover .tool {
+    .btn {
         display: block;
+        width: 100%;
+        overflow: hidden;
+        border: solid 1px white;
+
+        div {
+            word-wrap: break-word;
+        }
+    }
+    .btn-group {
+        width: 100%;
+        .btn-scroll {
+            width: 20%;
+            display: inline;
+            box-sizing: border-box;
+        }
+    }
+
+    .display {
+        .junk {
+            border: solid 2px $junk;
+        }
+        .money {
+            border: solid 2px $money;
+        }
+        .common {
+            border: solid 2px $common;
+        }
+        .uncommon {
+            border: solid 2px $uncommon;
+        }
+        .rare {
+            border: solid 2px $rare;
+        }
+        .very-rare {
+            border: solid 2px $veryRare;
+        }
+        .legendary {
+            background-color: #000000;
+            color: #FCFC7C;
+        }
+        .wand {
+            background-color: #00E1FF;
+            color: #000000;
+        }
+        .potion {
+            background-color: #63DB7B;
+            color: #000000;
+        }
+        .scroll {
+            background-color: #DBB363;
+            color: #000000;
+        }
+        hr {
+            margin: 0;
+        }
+
+        .item {
+            display: inline-block;
+            margin: 0 5px;
+            .stuff {
+
+                display: inline-block;
+                text-align: center;
+                padding: 20px 20px;
+                margin: 5px 0;
+                height: 100%;
+                border-radius: 5px; // &:after {
+                //     display: none;
+                //     position: absolute;
+                //     content: "";
+                //     width: 30px;
+                //     height: 30px;
+                //     top: 30%;
+                //     right: -9%;
+                //     background-color: $money;
+                //     transform: rotate(45deg); 
+                //     // z-index: -1;
+                // }
+                // &:hover:after {
+                //     display: block;
+                // }
+            }
+
+            .tool {
+                display: none;
+                position: fixed;
+                // top: 35px;
+                // left: 30%; // transform: translateX(50%);
+                background-color: $money;
+                z-index: 10;
+                border-radius: 5px;
+                text-align: left;
+                padding: 30px;
+                font-family: Georgia, serif;
+                max-width: 65%;
+                max-height: 50%;
+                overflow: auto;
+            }
+        }
+        .item:hover .tool {
+            display: block;
+        }
+    }
+
+
+    .btn-uncommon {
+        color: $white;
+        background-color: $uncommon;
+        border-color: $white;
+    }
+
+    .btn-uncommon:hover,
+    .btn-uncommon:focus,
+    .btn-uncommon:active,
+    .btn-uncommon.active,
+    .open .dropdown-toggle.btn-uncommon {
+        color: $white;
+        background-color: #C26B00;
+        border-color: $white;
+    }
+
+    .btn-uncommon:active,
+    .btn-uncommon.active,
+    .open .dropdown-toggle.btn-uncommon {
+        background-image: none;
+    }
+
+    .btn-uncommon.disabled,
+    .btn-uncommon[disabled],
+    fieldset[disabled] .btn-uncommon,
+    .btn-uncommon.disabled:hover,
+    .btn-uncommon[disabled]:hover,
+    fieldset[disabled] .btn-uncommon:hover,
+    .btn-uncommon.disabled:focus,
+    .btn-uncommon[disabled]:focus,
+    fieldset[disabled] .btn-uncommon:focus,
+    .btn-uncommon.disabled:active,
+    .btn-uncommon[disabled]:active,
+    fieldset[disabled] .btn-uncommon:active,
+    .btn-uncommon.disabled.active,
+    .btn-uncommon[disabled].active,
+    fieldset[disabled] .btn-uncommon.active {
+        background-color: #FF8C00;
+        border-color: $white;
+    }
+
+    .btn-uncommon .badge {
+        color: #FF8C00;
+        background-color: $white;
+    }
+
+    .btn-common {
+        color: $white;
+        background-color: #2E8B57;
+        border-color: $white;
+    }
+
+    .btn-common:hover,
+    .btn-common:focus,
+    .btn-common:active,
+    .btn-common.active,
+    .open .dropdown-toggle.btn-common {
+        color: $white;
+        background-color: #1C5736;
+        border-color: $white;
+    }
+
+    .btn-common:active,
+    .btn-common.active,
+    .open .dropdown-toggle.btn-common {
+        background-image: none;
+    }
+
+    .btn-common.disabled,
+    .btn-common[disabled],
+    fieldset[disabled] .btn-common,
+    .btn-common.disabled:hover,
+    .btn-common[disabled]:hover,
+    fieldset[disabled] .btn-common:hover,
+    .btn-common.disabled:focus,
+    .btn-common[disabled]:focus,
+    fieldset[disabled] .btn-common:focus,
+    .btn-common.disabled:active,
+    .btn-common[disabled]:active,
+    fieldset[disabled] .btn-common:active,
+    .btn-common.disabled.active,
+    .btn-common[disabled].active,
+    fieldset[disabled] .btn-common.active {
+        background-color: #2E8B57;
+        border-color: $white;
+    }
+
+    .btn-common .badge {
+        color: #2E8B57;
+        background-color: $white;
+    }
+
+    .btn-treasure {
+        color: $white;
+        background-color: #D1B200;
+        border-color: $white;
+    }
+
+    .btn-treasure:hover,
+    .btn-treasure:focus,
+    .btn-treasure:active,
+    .btn-treasure.active,
+    .open .dropdown-toggle.btn-treasure {
+        color: $white;
+        background-color: #AD9300;
+        border-color: $white;
+    }
+
+    .btn-treasure:active,
+    .btn-treasure.active,
+    .open .dropdown-toggle.btn-treasure {
+        background-image: none;
+    }
+
+    .btn-treasure.disabled,
+    .btn-treasure[disabled],
+    fieldset[disabled] .btn-treasure,
+    .btn-treasure.disabled:hover,
+    .btn-treasure[disabled]:hover,
+    fieldset[disabled] .btn-treasure:hover,
+    .btn-treasure.disabled:focus,
+    .btn-treasure[disabled]:focus,
+    fieldset[disabled] .btn-treasure:focus,
+    .btn-treasure.disabled:active,
+    .btn-treasure[disabled]:active,
+    fieldset[disabled] .btn-treasure:active,
+    .btn-treasure.disabled.active,
+    .btn-treasure[disabled].active,
+    fieldset[disabled] .btn-treasure.active {
+        background-color: #D1B200;
+        border-color: $white;
+    }
+
+    .btn-treasure .badge {
+        color: #D1B200;
+        background-color: $white;
+    }
+
+
+    .btn-rare {
+        color: #ffffff;
+        background-color: #663399;
+        border-color: #130269;
+    }
+
+    .btn-rare:hover,
+    .btn-rare:focus,
+    .btn-rare:active,
+    .btn-rare.active,
+    .open .dropdown-toggle.btn-rare {
+        color: #ffffff;
+        background-color: #49247A;
+        border-color: #130269;
+    }
+
+    .btn-rare:active,
+    .btn-rare.active,
+    .open .dropdown-toggle.btn-rare {
+        background-image: none;
+    }
+
+    .btn-rare.disabled,
+    .btn-rare[disabled],
+    fieldset[disabled] .btn-rare,
+    .btn-rare.disabled:hover,
+    .btn-rare[disabled]:hover,
+    fieldset[disabled] .btn-rare:hover,
+    .btn-rare.disabled:focus,
+    .btn-rare[disabled]:focus,
+    fieldset[disabled] .btn-rare:focus,
+    .btn-rare.disabled:active,
+    .btn-rare[disabled]:active,
+    fieldset[disabled] .btn-rare:active,
+    .btn-rare.disabled.active,
+    .btn-rare[disabled].active,
+    fieldset[disabled] .btn-rare.active {
+        background-color: #663399;
+        border-color: #130269;
+    }
+
+    .btn-rare .badge {
+        color: #663399;
+        background-color: #ffffff;
+    }
+
+    .btn-very-rare {
+        color: #FFFFFF;
+        background-color: #0096A1;
+        border-color: #FFFFFF;
+    }
+
+    .btn-very-rare:hover,
+    .btn-very-rare:focus,
+    .btn-very-rare:active,
+    .btn-very-rare.active,
+    .open .dropdown-toggle.btn-very-rare {
+        color: #FFFFFF;
+        background-color: #006269;
+        border-color: #FFFFFF;
+    }
+
+    .btn-very-rare:active,
+    .btn-very-rare.active,
+    .open .dropdown-toggle.btn-very-rare {
+        background-image: none;
+    }
+
+    .btn-very-rare.disabled,
+    .btn-very-rare[disabled],
+    fieldset[disabled] .btn-very-rare,
+    .btn-very-rare.disabled:hover,
+    .btn-very-rare[disabled]:hover,
+    fieldset[disabled] .btn-very-rare:hover,
+    .btn-very-rare.disabled:focus,
+    .btn-very-rare[disabled]:focus,
+    fieldset[disabled] .btn-very-rare:focus,
+    .btn-very-rare.disabled:active,
+    .btn-very-rare[disabled]:active,
+    fieldset[disabled] .btn-very-rare:active,
+    .btn-very-rare.disabled.active,
+    .btn-very-rare[disabled].active,
+    fieldset[disabled] .btn-very-rare.active {
+        background-color: #0096A1;
+        border-color: #FFFFFF;
+    }
+
+    .btn-very-rare .badge {
+        color: #0096A1;
+        background-color: #FFFFFF;
+    }
+
+    .btn-legendary {
+        color: #FCFC7C;
+        background-color: #000000;
+        border-color: #130269;
+    }
+
+    .btn-legendary:hover,
+    .btn-legendary:focus,
+    .btn-legendary:active,
+    .btn-legendary.active,
+    .open .dropdown-toggle.btn-legendary {
+        color: #FCFC7C;
+        background-color: #949494;
+        border-color: #130269;
+    }
+
+    .btn-legendary:active,
+    .btn-legendary.active,
+    .open .dropdown-toggle.btn-legendary {
+        background-image: none;
+    }
+
+    .btn-legendary.disabled,
+    .btn-legendary[disabled],
+    fieldset[disabled] .btn-legendary,
+    .btn-legendary.disabled:hover,
+    .btn-legendary[disabled]:hover,
+    fieldset[disabled] .btn-legendary:hover,
+    .btn-legendary.disabled:focus,
+    .btn-legendary[disabled]:focus,
+    fieldset[disabled] .btn-legendary:focus,
+    .btn-legendary.disabled:active,
+    .btn-legendary[disabled]:active,
+    fieldset[disabled] .btn-legendary:active,
+    .btn-legendary.disabled.active,
+    .btn-legendary[disabled].active,
+    fieldset[disabled] .btn-legendary.active {
+        background-color: #000000;
+        border-color: #130269;
+    }
+
+    .btn-legendary .badge {
+        color: #000000;
+        background-color: #FCFC7C;
     }
 }
 
-
-.btn-uncommon {
-    color: $white;
-    background-color: $uncommon;
-    border-color: $white;
+.btn-wand {
+    color: #000000;
+    background-color: #00E1FF;
+    border-color: #FFFFFF;
 }
 
-.btn-uncommon:hover,
-.btn-uncommon:focus,
-.btn-uncommon:active,
-.btn-uncommon.active,
-.open .dropdown-toggle.btn-uncommon {
-    color: $white;
-    background-color: #C26B00;
-    border-color: $white;
+.btn-wand:hover,
+.btn-wand:focus,
+.btn-wand:active,
+.btn-wand.active,
+.open .dropdown-toggle.btn-wand {
+    color: #000000;
+    background-color: #00BAAB;
+    border-color: #FFFFFF;
 }
 
-.btn-uncommon:active,
-.btn-uncommon.active,
-.open .dropdown-toggle.btn-uncommon {
+.btn-wand:active,
+.btn-wand.active,
+.open .dropdown-toggle.btn-wand {
     background-image: none;
 }
 
-.btn-uncommon.disabled,
-.btn-uncommon[disabled],
-fieldset[disabled] .btn-uncommon,
-.btn-uncommon.disabled:hover,
-.btn-uncommon[disabled]:hover,
-fieldset[disabled] .btn-uncommon:hover,
-.btn-uncommon.disabled:focus,
-.btn-uncommon[disabled]:focus,
-fieldset[disabled] .btn-uncommon:focus,
-.btn-uncommon.disabled:active,
-.btn-uncommon[disabled]:active,
-fieldset[disabled] .btn-uncommon:active,
-.btn-uncommon.disabled.active,
-.btn-uncommon[disabled].active,
-fieldset[disabled] .btn-uncommon.active {
-    background-color: #FF8C00;
-    border-color: $white;
+.btn-wand.disabled,
+.btn-wand[disabled],
+fieldset[disabled] .btn-wand,
+.btn-wand.disabled:hover,
+.btn-wand[disabled]:hover,
+fieldset[disabled] .btn-wand:hover,
+.btn-wand.disabled:focus,
+.btn-wand[disabled]:focus,
+fieldset[disabled] .btn-wand:focus,
+.btn-wand.disabled:active,
+.btn-wand[disabled]:active,
+fieldset[disabled] .btn-wand:active,
+.btn-wand.disabled.active,
+.btn-wand[disabled].active,
+fieldset[disabled] .btn-wand.active {
+    background-color: #00E1FF;
+    border-color: #FFFFFF;
 }
 
-.btn-uncommon .badge {
-    color: #FF8C00;
-    background-color: $white;
+.btn-wand .badge {
+    color: #00E1FF;
+    background-color: #000000;
 }
 
-.btn-common {
-    color: $white;
-    background-color: #2E8B57;
-    border-color: $white;
+.btn-potion {
+    color: #000000;
+    background-color: #63DB7B;
+    border-color: #FFFFFF;
 }
 
-.btn-common:hover,
-.btn-common:focus,
-.btn-common:active,
-.btn-common.active,
-.open .dropdown-toggle.btn-common {
-    color: $white;
-    background-color: #1C5736;
-    border-color: $white;
+.btn-potion:hover,
+.btn-potion:focus,
+.btn-potion:active,
+.btn-potion.active,
+.open .dropdown-toggle.btn-potion {
+    color: #000000;
+    background-color: #00BA25;
+    border-color: #FFFFFF;
 }
 
-.btn-common:active,
-.btn-common.active,
-.open .dropdown-toggle.btn-common {
+.btn-potion:active,
+.btn-potion.active,
+.open .dropdown-toggle.btn-potion {
     background-image: none;
 }
 
-.btn-common.disabled,
-.btn-common[disabled],
-fieldset[disabled] .btn-common,
-.btn-common.disabled:hover,
-.btn-common[disabled]:hover,
-fieldset[disabled] .btn-common:hover,
-.btn-common.disabled:focus,
-.btn-common[disabled]:focus,
-fieldset[disabled] .btn-common:focus,
-.btn-common.disabled:active,
-.btn-common[disabled]:active,
-fieldset[disabled] .btn-common:active,
-.btn-common.disabled.active,
-.btn-common[disabled].active,
-fieldset[disabled] .btn-common.active {
-    background-color: #2E8B57;
-    border-color: $white;
+.btn-potion.disabled,
+.btn-potion[disabled],
+fieldset[disabled] .btn-potion,
+.btn-potion.disabled:hover,
+.btn-potion[disabled]:hover,
+fieldset[disabled] .btn-potion:hover,
+.btn-potion.disabled:focus,
+.btn-potion[disabled]:focus,
+fieldset[disabled] .btn-potion:focus,
+.btn-potion.disabled:active,
+.btn-potion[disabled]:active,
+fieldset[disabled] .btn-potion:active,
+.btn-potion.disabled.active,
+.btn-potion[disabled].active,
+fieldset[disabled] .btn-potion.active {
+    background-color: #63DB7B;
+    border-color: #FFFFFF;
 }
 
-.btn-common .badge {
-    color: #2E8B57;
-    background-color: $white;
+.btn-potion .badge {
+    color: #63DB7B;
+    background-color: #000000;
 }
 
-.btn-treasure {
-    color: $white;
-    background-color: #D1B200;
-    border-color: $white;
+.btn-scroll {
+    color: #000000;
+    background-color: #DBB363;
+    border-color: #FFFFFF;
 }
 
-.btn-treasure:hover,
-.btn-treasure:focus,
-.btn-treasure:active,
-.btn-treasure.active,
-.open .dropdown-toggle.btn-treasure {
-    color: $white;
-    background-color: #AD9300;
-    border-color: $white;
+.btn-scroll:hover,
+.btn-scroll:focus,
+.btn-scroll:active,
+.btn-scroll.active,
+.open .dropdown-toggle.btn-scroll {
+    color: #000000;
+    background-color: #BA9500;
+    border-color: #FFFFFF;
 }
 
-.btn-treasure:active,
-.btn-treasure.active,
-.open .dropdown-toggle.btn-treasure {
+.btn-scroll:active,
+.btn-scroll.active,
+.open .dropdown-toggle.btn-scroll {
     background-image: none;
 }
 
-.btn-treasure.disabled,
-.btn-treasure[disabled],
-fieldset[disabled] .btn-treasure,
-.btn-treasure.disabled:hover,
-.btn-treasure[disabled]:hover,
-fieldset[disabled] .btn-treasure:hover,
-.btn-treasure.disabled:focus,
-.btn-treasure[disabled]:focus,
-fieldset[disabled] .btn-treasure:focus,
-.btn-treasure.disabled:active,
-.btn-treasure[disabled]:active,
-fieldset[disabled] .btn-treasure:active,
-.btn-treasure.disabled.active,
-.btn-treasure[disabled].active,
-fieldset[disabled] .btn-treasure.active {
-    background-color: #D1B200;
-    border-color: $white;
+.btn-scroll.disabled,
+.btn-scroll[disabled],
+fieldset[disabled] .btn-scroll,
+.btn-scroll.disabled:hover,
+.btn-scroll[disabled]:hover,
+fieldset[disabled] .btn-scroll:hover,
+.btn-scroll.disabled:focus,
+.btn-scroll[disabled]:focus,
+fieldset[disabled] .btn-scroll:focus,
+.btn-scroll.disabled:active,
+.btn-scroll[disabled]:active,
+fieldset[disabled] .btn-scroll:active,
+.btn-scroll.disabled.active,
+.btn-scroll[disabled].active,
+fieldset[disabled] .btn-scroll.active {
+    background-color: #DBB363;
+    border-color: #FFFFFF;
 }
 
-.btn-treasure .badge {
-    color: #D1B200;
-    background-color: $white;
-}
-
-
-.btn-rare { 
-  color: #ffffff; 
-  background-color: #663399; 
-  border-color: #130269; 
-} 
- 
-.btn-rare:hover, 
-.btn-rare:focus, 
-.btn-rare:active, 
-.btn-rare.active, 
-.open .dropdown-toggle.btn-rare { 
-  color: #ffffff; 
-  background-color: #49247A; 
-  border-color: #130269; 
-} 
- 
-.btn-rare:active, 
-.btn-rare.active, 
-.open .dropdown-toggle.btn-rare { 
-  background-image: none; 
-} 
- 
-.btn-rare.disabled, 
-.btn-rare[disabled], 
-fieldset[disabled] .btn-rare, 
-.btn-rare.disabled:hover, 
-.btn-rare[disabled]:hover, 
-fieldset[disabled] .btn-rare:hover, 
-.btn-rare.disabled:focus, 
-.btn-rare[disabled]:focus, 
-fieldset[disabled] .btn-rare:focus, 
-.btn-rare.disabled:active, 
-.btn-rare[disabled]:active, 
-fieldset[disabled] .btn-rare:active, 
-.btn-rare.disabled.active, 
-.btn-rare[disabled].active, 
-fieldset[disabled] .btn-rare.active { 
-  background-color: #663399; 
-  border-color: #130269; 
-} 
- 
-.btn-rare .badge { 
-  color: #663399; 
-  background-color: #ffffff; 
-}
-
-.btn-very-rare { 
-  color: #FFFFFF; 
-  background-color: #0096A1; 
-  border-color: #FFFFFF; 
-} 
- 
-.btn-very-rare:hover, 
-.btn-very-rare:focus, 
-.btn-very-rare:active, 
-.btn-very-rare.active, 
-.open .dropdown-toggle.btn-very-rare { 
-  color: #FFFFFF; 
-  background-color: #006269; 
-  border-color: #FFFFFF; 
-} 
- 
-.btn-very-rare:active, 
-.btn-very-rare.active, 
-.open .dropdown-toggle.btn-very-rare { 
-  background-image: none; 
-} 
- 
-.btn-very-rare.disabled, 
-.btn-very-rare[disabled], 
-fieldset[disabled] .btn-very-rare, 
-.btn-very-rare.disabled:hover, 
-.btn-very-rare[disabled]:hover, 
-fieldset[disabled] .btn-very-rare:hover, 
-.btn-very-rare.disabled:focus, 
-.btn-very-rare[disabled]:focus, 
-fieldset[disabled] .btn-very-rare:focus, 
-.btn-very-rare.disabled:active, 
-.btn-very-rare[disabled]:active, 
-fieldset[disabled] .btn-very-rare:active, 
-.btn-very-rare.disabled.active, 
-.btn-very-rare[disabled].active, 
-fieldset[disabled] .btn-very-rare.active { 
-  background-color: #0096A1; 
-  border-color: #FFFFFF; 
-} 
- 
-.btn-very-rare .badge { 
-  color: #0096A1; 
-  background-color: #FFFFFF; 
-}
-
-.btn-legendary { 
-  color: #FCFC7C; 
-  background-color: #000000; 
-  border-color: #130269; 
-} 
- 
-.btn-legendary:hover, 
-.btn-legendary:focus, 
-.btn-legendary:active, 
-.btn-legendary.active, 
-.open .dropdown-toggle.btn-legendary { 
-  color: #FCFC7C; 
-  background-color: #949494; 
-  border-color: #130269; 
-} 
- 
-.btn-legendary:active, 
-.btn-legendary.active, 
-.open .dropdown-toggle.btn-legendary { 
-  background-image: none; 
-} 
- 
-.btn-legendary.disabled, 
-.btn-legendary[disabled], 
-fieldset[disabled] .btn-legendary, 
-.btn-legendary.disabled:hover, 
-.btn-legendary[disabled]:hover, 
-fieldset[disabled] .btn-legendary:hover, 
-.btn-legendary.disabled:focus, 
-.btn-legendary[disabled]:focus, 
-fieldset[disabled] .btn-legendary:focus, 
-.btn-legendary.disabled:active, 
-.btn-legendary[disabled]:active, 
-fieldset[disabled] .btn-legendary:active, 
-.btn-legendary.disabled.active, 
-.btn-legendary[disabled].active, 
-fieldset[disabled] .btn-legendary.active { 
-  background-color: #000000; 
-  border-color: #130269; 
-} 
- 
-.btn-legendary .badge { 
-  color: #000000; 
-  background-color: #FCFC7C; 
-}
+.btn-scroll .badge {
+    color: #DBB363;
+    background-color: #000000;
 }

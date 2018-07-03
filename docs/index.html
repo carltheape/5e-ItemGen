@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>DnD practice</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="assets/sass/main.css">
-	
+    <meta charset="UTF-8">
+    <title>DnD practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="assets/sass/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
+
 <body>
-	<div class="container">
-			<button id="delete-all" class="btn btn-danger btn-lg">
-				Delete All
-			</button>
-			<button id="mundane-item" class="btn btn-primary btn-lg">
-				Get Mundane Item
-			</button>
-			<button id="treasure-item" class="btn btn-treasure btn-lg">
-				Get Treasure Item
-			</button>
-			<button id="common-magic-item" class="btn btn-common btn-lg">
-				Get Common Magic Item (lvl 1+)
-			</button>
-			<button id="uncommon-magic-item" class="btn btn-uncommon btn-lg">
-				Get Uncommon Magic Item (lvl 1+)
-			</button>
-			<button id="rare-magic-item" class="btn btn-rare btn-lg">
-				Get Rare Magic Item (lvl 5+)
-			</button>
-			<button id="very-rare-magic-item" class="btn btn-very-rare btn-lg">
-				Get Very Rare Magic Item (lvl 11+)
-			</button>
-			<button id="legendary-magic-item" class="btn btn-legendary btn-lg">
-				Get Legendary Magic Item (lvl 17+)
-			</button>
-			<button id="wand-item" class="btn btn-wand btn-lg">
-				Get Wand
-			</button>
-			<button id="potion-item" class="btn btn-potion btn-lg">
-				Get Potion
-			</button>
-			<div class="row">
-				<div class="display col-xs-2 row"></div>
-				
-			</div>
-	</div>
-	<script src="assets/vendors/js/vendors.js"></script>
-	<script src="assets/js/bundle.js"></script>
-    
+    <div class="container">
+    	<button id="delete-all" class="btn btn-danger btn-lg item" data-toggle="tooltip" data-placement="right" title="Delete All">
+                <i class="fa fa-trash-o tabIcon" aria-hidden="true"></i>
+                <!-- <p class="tool">Delete All</p> -->
+        </button>
+        <div id="randItems">
+        	<div class="randItemsTab">
+        		<i id="randItemsIcon" class="fa fa-arrow-right tabIcon" aria-hidden="true"></i>
+        	</div>
+            <button id="mundane-item" class="btn btn-primary btn-lg">
+                Get Mundane Item
+            </button>
+            <button id="treasure-item" class="btn btn-treasure btn-lg">
+                Get Treasure Item
+            </button>
+            <button id="common-magic-item" class="btn btn-common btn-lg">
+                Get Common Magic Item (lvl 1+)
+            </button>
+            <button id="uncommon-magic-item" class="btn btn-uncommon btn-lg">
+                Get Uncommon Magic Item (lvl 1+)
+            </button>
+            <button id="rare-magic-item" class="btn btn-rare btn-lg">
+                Get Rare Magic Item (lvl 5+)
+            </button>
+            <button id="very-rare-magic-item" class="btn btn-very-rare btn-lg">
+                Get Very Rare Magic Item (lvl 11+)
+            </button>
+            <button id="legendary-magic-item" class="btn btn-legendary btn-lg">
+                Get Legendary Magic Item (lvl 17+)
+            </button>
+            <button id="wand-item" class="btn btn-wand btn-lg">
+                Get Wand
+            </button>
+            <button id="potion-item" class="btn btn-potion btn-lg">
+                Get Potion
+            </button>
+            <div class="btn-group">
+                <button id="scroll-item01" class="btn btn-scroll btn-lg">
+                    Get Scroll 0-1
+                </button>
+                <button id="scroll-item23" class="btn btn-scroll btn-lg">
+                    Get Scroll 2-3
+                </button>
+                <button id="scroll-item45" class="btn btn-scroll btn-lg">
+                    Get Scroll 4-5
+                </button>
+                <button id="scroll-item67" class="btn btn-scroll btn-lg">
+                    Get Scroll 6-7
+                </button>
+                <button id="scroll-item89" class="btn btn-scroll btn-lg">
+                    Get Scroll 8-9
+                </button>
+            </div>
+        </div>
+            <div class="row">
+                <div class="display row">
+                </div>
+            </div>
+    </div>
+    <script src="assets/vendors/js/vendors.js"></script>
+    <script src="assets/js/bundle.js"></script>
 </body>
+
 </html>
