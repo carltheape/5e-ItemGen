@@ -374,7 +374,7 @@ module.exports = function() {
                             }
                             if (stuff.entries[i].rows) {
                                 for (var j = 0; j < stuff.entries[i].rows.length; j++) {
-                                    tooltip += `<br>${stuff.entries[i].rows[j]}`
+                                    tooltip += `<br>${stuff.entries[i].rows[j]}<br>`
                                 }
                             }
                         }
@@ -476,13 +476,21 @@ module.exports = function() {
                 }
                 return (tool);
             }
+            var deleteItem = function () {
+            	$(this).parent().remove();
+            }
 
             var displayItem = function(tool, name, type) {
                 $(".display").append(
-                    `<div class="item"><div class="stuff ${type}">${name}</div><p class="tool">${tool}</p></div>`,
+                    `<div class="item">
+                    	<div class="stuff ${type}">${name}</div>
+                    	<p class="tool">${tool}</p>
+                    	<button class="btn btn-danger btn-xs del-item">
+               				<i class="fa fa-times-circle" aria-hidden="true"></i>
+        				</button>
+                    </div>`,
                 );
             }
-
             // document.addEventListener('mousemove', fn, false);
             // function fn(e) {
             // 	var tank = $(".tool");
@@ -499,6 +507,10 @@ module.exports = function() {
 
             // }
 
+	            // $(".del-item").click(function() {
+	            // 	console.log("FML");
+	            // });
+	        $(document).on('click', '.del-item', deleteItem);
             $("#delete-all").click(deleteAll);
             $("#mundane-item").click(getMundane);
             $("#treasure-item").click(getTreasure);
@@ -514,10 +526,14 @@ module.exports = function() {
             $("#scroll-item45").click([4, 5], getScrollOnly);
             $("#scroll-item67").click([6, 7], getScrollOnly);
             $("#scroll-item89").click([8, 9], getScrollOnly);
+            
             $(".randItemsTab").click(function() {
                 $("#randItems").toggleClass("show");
                 $("#randItemsIcon").toggleClass("expanded");
+                $(".display").parent().toggleClass("display-small");
             });
+            
+            
 
         }
     }

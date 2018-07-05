@@ -105,40 +105,8 @@ $veryRare: #0096A1;
     }
 
     .display {
-        .junk {
-            border: solid 2px $junk;
-        }
-        .money {
-            border: solid 2px $money;
-        }
-        .common {
-            border: solid 2px $common;
-        }
-        .uncommon {
-            border: solid 2px $uncommon;
-        }
-        .rare {
-            border: solid 2px $rare;
-        }
-        .very-rare {
-            border: solid 2px $veryRare;
-        }
-        .legendary {
-            background-color: #000000;
-            color: #FCFC7C;
-        }
-        .wand {
-            background-color: #00E1FF;
-            color: #000000;
-        }
-        .potion {
-            background-color: #63DB7B;
-            color: #000000;
-        }
-        .scroll {
-            background-color: #DBB363;
-            color: #000000;
-        }
+        margin-left: 45px;
+        
         hr {
             margin: 0;
         }
@@ -146,6 +114,7 @@ $veryRare: #0096A1;
         .item {
             display: inline-block;
             margin: 0 5px;
+            position: relative;
             .stuff {
 
                 display: inline-block;
@@ -153,7 +122,9 @@ $veryRare: #0096A1;
                 padding: 20px 20px;
                 margin: 5px 0;
                 height: 100%;
-                border-radius: 5px; // &:after {
+                border-radius: 5px;
+                background-color: white;
+                // &:after {
                 //     display: none;
                 //     position: absolute;
                 //     content: "";
@@ -169,6 +140,40 @@ $veryRare: #0096A1;
                 //     display: block;
                 // }
             }
+            .junk {
+            border: solid 2px $junk;
+            }
+            .money {
+                border: solid 2px $money;
+            }
+            .common {
+                border: solid 2px $common;
+            }
+            .uncommon {
+                border: solid 2px $uncommon;
+            }
+            .rare {
+                border: solid 2px $rare;
+            }
+            .very-rare {
+                border: solid 2px $veryRare;
+            }
+            .legendary {
+                background-color: #000000;
+                color: #FCFC7C;
+            }
+            .wand {
+                background-color: #00E1FF;
+                color: #000000;
+            }
+            .potion {
+                background-color: #63DB7B;
+                color: #000000;
+            }
+            .scroll {
+                background-color: #DBB363;
+                color: #000000;
+            }
 
             .tool {
                 display: none;
@@ -181,16 +186,29 @@ $veryRare: #0096A1;
                 text-align: left;
                 padding: 30px;
                 font-family: Georgia, serif;
-                max-width: 65%;
+                max-width: 50%;
                 max-height: 50%;
                 overflow: auto;
+            }
+            
+            .del-item{
+              position: absolute;
+              top: 7px;
+              right: 2px;
+              width: 20px;
+              background-color: transparent;
+              color: #D9534F;
+              border: 0;
             }
         }
         .item:hover .tool {
             display: block;
         }
     }
-
+.display-small{
+          width: 57%;
+          float: right;
+        }
 
     .btn-uncommon {
         color: $white;
