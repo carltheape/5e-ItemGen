@@ -527,8 +527,8 @@ module.exports = function() {
             $("#scroll-item89").click([8, 9], getScrollOnly);
             
             $(".randItemsTab").click(function() {
-                $("#randItems").toggleClass("show");
-                $("#randItemsIcon").toggleClass("expanded");
+                $(this).parent().toggleClass("show");
+                $(this).find( "img" ).toggleClass("expanded");
                 $(".display").parent().toggleClass("display-small");
             });
             
