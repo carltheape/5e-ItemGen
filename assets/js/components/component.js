@@ -28,6 +28,8 @@ module.exports = function() {
             let itm = require("./json/items.json");
             let rce = require("./json/races.json");
             let spl = require("./json/spells.json");
+            let rdm = require("./json/random-tables.json");
+            let fud = require("./json/foods.json");
 
             let backgrounds = bkg.background;
             let basics = bit.basicitem;
@@ -104,8 +106,8 @@ module.exports = function() {
                 spLvl[spells[i].level].push(spells[i]);
             };
 
-            console.log(potions);
-            console.log(wands);
+            // console.log(potions);
+            console.log(fud);
             // console.log(ranged);
 
             var deleteAll = function() {
