@@ -38,6 +38,7 @@ module.exports = function() {
             let classes = cls.class;
             let feats = fet.feat;
             let items = itm.item;
+            let itemNames = [];
             let mundane = [];
             let treasure = [];
             let common = [];
@@ -67,6 +68,7 @@ module.exports = function() {
 
 
             for (var i = 0; i < items.length; i++) {
+                itemNames.push(items[i].name)
                 if (items[i].rarity == "Common") {
                     common.push(items[i])
                 }
@@ -107,7 +109,7 @@ module.exports = function() {
             };
 
             // console.log(potions);
-            console.log(fud);
+            console.log(items);
             // console.log(ranged);
 
             var deleteAll = function() {
@@ -115,7 +117,8 @@ module.exports = function() {
 
             };
 
-            var getMundane = function() {
+            var getMundane = function(e) {
+                console.log(e);
                 var stuff = mundane[Math.floor(Math.random() * mundane.length)];
                 console.log(stuff);
                 tooltip = "";
@@ -511,6 +514,28 @@ module.exports = function() {
 	            // $(".del-item").click(function() {
 	            // 	console.log("FML");
 	            // });
+
+
+            $("#myInput").autocomplete({
+               source: itemNames
+            });
+
+            $('.ui-corner-all').click(function( event ) {
+                event.stopPropagation();
+                // console.log(event.target.innerHTML);
+                let searchName = event.target.innerHTML;
+                $.each(items, function(i, v) {
+                    if (v.name == searchName) {
+                        // let searchRarity = v.rarity;
+                        // if (searchRarity == "None"){
+
+                        // }
+                        console.log(searchName);
+                        return;
+                    }
+                });
+            });
+
 	        $(document).on('click', '.del-item', deleteItem);
             $("#delete-all").click(deleteAll);
             $("#mundane-item").click(getMundane);
