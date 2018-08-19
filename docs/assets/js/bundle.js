@@ -76,6 +76,9 @@ module.exports = function() {
                 if (items[i].rarity == "None" && items[i].type == "G") {
                     mundane.push(items[i])
                 }
+                if (items[i].rarity == "None" && items[i].type == "G" && items[i].source == "DMG") {
+                    potions.push(items[i])
+                }
                 if (items[i].rarity == "Uncommon") {
                     uncommon.push(items[i])
                 }
@@ -44754,7 +44757,7 @@ null
 ]
 },
 {
-"name": "Blod Stone",
+"name": "Blood Stone",
 "wondrous": true,
 "source": "SKT",
 "page": "233",
