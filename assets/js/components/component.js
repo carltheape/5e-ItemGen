@@ -72,7 +72,7 @@ module.exports = function() {
                 if (items[i].rarity == "Common") {
                     common.push(items[i])
                 }
-                if (items[i].rarity == "None" && items[i].type == "G" && items[i].source == "PHB") {
+                if (items[i].rarity == "None" && items[i].type == "G") {
                     mundane.push(items[i])
                 }
                 if (items[i].rarity == "Uncommon") {
@@ -116,13 +116,30 @@ module.exports = function() {
                 $(".display").html("");
 
             };
+            
+            function findObjectByKey(array, value) {
+                for (var i = 0; i < array.length; i++) {
+                    if(array[i].name === value.name){
+                        return array[i]
+                    }
+                }
+                return null;
+            };
 
-            var getMundane = function(e) {
-                console.log(e);
-                var stuff = mundane[Math.floor(Math.random() * mundane.length)];
+            var getMundane = function(x) {
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = mundane[Math.floor(Math.random() * mundane.length)];
+                    console.log("empty");
+                }
+                else{
+
+                    stuff = findObjectByKey(mundane, x);
+                    console.log(stuff);
+                }
                 console.log(stuff);
                 tooltip = "";
-                page = `\npage ${stuff.page} of ${stuff.source}`;
+                // page = `\npage ${stuff.page} of ${stuff.source}`;
 
                 if (stuff.entries && stuff.entries.length == 1) {
                     tooltip = stuff.entries[0];
@@ -149,8 +166,17 @@ module.exports = function() {
                 displayItem(tooltip, stuff.name, "junk");
             };
 
-            var getTreasure = function() {
-                var stuff = treasure[Math.floor(Math.random() * 100)];
+            var getTreasure = function(x) {
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = treasure[Math.floor(Math.random() * 100)]; //100
+                    console.log("empty");
+                }
+                else{
+
+                    stuff = findObjectByKey(treasure, x);
+                    console.log(stuff);
+                }
                 tooltip = "";
                 console.log(stuff);
 
@@ -163,9 +189,18 @@ module.exports = function() {
                 displayItem(tooltip, stuff.name, "money");
             };
 
-            var getCommon = function() {
+            var getCommon = function(x) {
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = common[Math.floor(Math.random() * common.length)];
+                    console.log("empty");
+                }
+                else{
+
+                    stuff = findObjectByKey(common, x);
+                    console.log(stuff);
+                }
                 var tooltip = "";
-                var stuff = common[Math.floor(Math.random() * common.length)];
                 console.log(stuff);
 
                 if (stuff.entries.length == 1) {
@@ -202,12 +237,17 @@ module.exports = function() {
             };
 
 
-            var getUncommon = function() {
+            var getUncommon = function(x) {
                 var tooltip = "";
-                var stuff =
-                    // uncommon[10];
-                    uncommon[Math.floor(Math.random() * uncommon.length)];
-                console.log(stuff);
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = uncommon[Math.floor(Math.random() * uncommon.length)];
+                    console.log("empty");
+                }
+                else{
+                    stuff = findObjectByKey(uncommon, x);
+                    console.log(stuff);
+                }
 
                 if (stuff.entries && stuff.entries.length == 1) {
                     tooltip = stuff.entries;
@@ -247,12 +287,17 @@ module.exports = function() {
                 displayItem(tooltip, stuff.name, "uncommon")
             };
 
-            var getRare = function() {
+            var getRare = function(x) {
                 var tooltip = "";
-                var stuff =
-                    // uncommon[10];
-                    rare[Math.floor(Math.random() * rare.length)];
-                console.log(stuff);
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = rare[Math.floor(Math.random() * rare.length)];
+                    console.log("empty");
+                }
+                else{
+                    stuff = findObjectByKey(rare, x);
+                    console.log(stuff);
+                }
 
                 if (stuff.entries && stuff.entries.length == 1) {
                     tooltip = stuff.entries;
@@ -296,13 +341,17 @@ module.exports = function() {
                 displayItem(tooltip, stuff.name, "rare")
             };
 
-            var getVeryRare = function() {
+            var getVeryRare = function(x) {
                 var tooltip = "";
-                var stuff =
-                    // uncommon[10];
-                    veryRare[Math.floor(Math.random() * veryRare.length)];
-                console.log(stuff);
-
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = veryRare[Math.floor(Math.random() * veryRare.length)];
+                    console.log("empty");
+                }
+                else{
+                    stuff = findObjectByKey(veryRare, x);
+                    console.log(stuff);
+                }
                 if (stuff.entries && stuff.entries.length == 1) {
                     tooltip = stuff.entries;
                 } else if (!stuff.entries) {
@@ -348,12 +397,17 @@ module.exports = function() {
                 displayItem(tooltip, stuff.name, "very-rare")
             };
 
-            var getLegendary = function() {
+            var getLegendary = function(x) {
                 var tooltip = "";
-                var stuff =
-                    // uncommon[10];
-                    legendary[Math.floor(Math.random() * legendary.length)];
-                console.log(stuff);
+                var stuff = "";
+                if(typeof x == 'undefined') {
+                    stuff = legendary[Math.floor(Math.random() * legendary.length)];
+                    console.log("empty");
+                }
+                else{
+                    stuff = findObjectByKey(legendary, x);
+                    console.log(stuff);
+                }
 
                 if (stuff.entries && stuff.entries.length == 1) {
                     tooltip = stuff.entries;
@@ -516,35 +570,75 @@ module.exports = function() {
 	            // });
 
 
-            $("#myInput").autocomplete({
+            $("#itemSearch").autocomplete({
                source: itemNames
             });
 
-            $('.ui-corner-all').click(function( event ) {
-                event.stopPropagation();
-                // console.log(event.target.innerHTML);
-                let searchName = event.target.innerHTML;
-                $.each(items, function(i, v) {
-                    if (v.name == searchName) {
-                        // let searchRarity = v.rarity;
-                        // if (searchRarity == "None"){
-
-                        // }
-                        console.log(searchName);
-                        return;
-                    }
-                });
+            $('#itemSubmit').click(function( event ) {
+                event.preventDefault();
+                let query = $("#itemSearch").val();
+                toSearch(items, query);
+                $("#itemSearch").val("");
             });
+
+
+            var toSearch = function(source, search){
+            var results = "";
+            for (var property1 in source) {
+                if (source[property1].name == search) {
+                    results = source[property1];
+                    console.log(results)
+                }
+            }
+            if(results.rarity == "Common"){
+                getCommon(results);
+            }
+            if(results.type == "$"){
+                getTreasure(results);
+            }
+            if(results.rarity == "None" && results.type == "G"){
+                getMundane(results);
+            }
+            if(results.rarity == "Uncommon"){
+                getUncommon(results);
+            }
+            if(results.rarity == "Rare"){
+                getRare(results);
+            }
+            if(results.rarity == "Very Rare"){
+                getVeryRare(results);
+            }
+            if(results.rarity == "Legendary"){
+                getLegendary(results);
+            }
+            else{
+                //HANDLE THE ERROR INPUT
+            }
+            }
 
 	        $(document).on('click', '.del-item', deleteItem);
             $("#delete-all").click(deleteAll);
-            $("#mundane-item").click(getMundane);
-            $("#treasure-item").click(getTreasure);
-            $("#common-magic-item").click(getCommon);
-            $("#uncommon-magic-item").click(getUncommon);
-            $("#rare-magic-item").click(getRare);
-            $("#very-rare-magic-item").click(getVeryRare);
-            $("#legendary-magic-item").click(getLegendary);
+            $("#mundane-item").click(function(){
+                getMundane();
+            });
+            $("#treasure-item").click(function(){
+                getTreasure();
+            });
+            $("#common-magic-item").click(function(){
+                getCommon();
+            });
+            $("#uncommon-magic-item").click(function(){
+                getUncommon();
+            });
+            $("#rare-magic-item").click(function(){
+                getRare();
+            });
+            $("#very-rare-magic-item").click(function(){
+                getVeryRare();
+            });
+            $("#legendary-magic-item").click(function(){
+                getLegendary();
+            });
             $("#wand-item").click(getWand);
             $("#potion-item").click(getPotion);
             $("#scroll-item01").click([0, 1], getScrollOnly);
@@ -558,8 +652,17 @@ module.exports = function() {
                 $(this).find( "img" ).toggleClass("expanded");
                 $(".display").parent().toggleClass("display-small");
             });
-            
-            
+
+
+
+            // function MyFunction(info) {
+            //     $('#output').html(info);
+            // }
+
+            // $('#myButton').click(function() {
+            //     var passThis = $('input[name="foo"]').val();
+            //     MyFunction(passThis);
+            // });
 
         }
     }
