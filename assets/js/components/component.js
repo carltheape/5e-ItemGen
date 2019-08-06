@@ -72,7 +72,7 @@ module.exports = function() {
                 if (items[i].rarity == "Common") {
                     common.push(items[i])
                 }
-                if (items[i].rarity == "None" && items[i].type == "G") {
+                if (items[i].rarity == "None" && (items[i].type == "G" || items[i].type == "M" || items[i].type == "S" || items[i].type == "R" || items[i].type == "M" || items[i].type == "A" || items[i].type == "LA" || items[i].type == "MA" || items[i].type == "HA")) {
                     mundane.push(items[i])
                 }
                 if (items[i].rarity == "None" && items[i].type == "G" && items[i].source == "DMG") {
@@ -133,6 +133,7 @@ module.exports = function() {
                 var stuff = "";
                 if(typeof x == 'undefined') {
                     stuff = mundane[Math.floor(Math.random() * mundane.length)];
+                    // stuff = mundane[849];
                     console.log("empty");
                 }
                 else{
@@ -599,7 +600,7 @@ module.exports = function() {
             if(results.type == "$"){
                 getTreasure(results);
             }
-            if(results.rarity == "None" && results.type == "G"){
+            if(results.rarity == "None" && results.type == "G" || results.type == "M" || results.type == "R" || results.type == "A" || results.type == "MA" || results.type == "LA" || results.type == "HA" || results.type == "S"){
                 getMundane(results);
             }
             if(results.rarity == "Uncommon"){
